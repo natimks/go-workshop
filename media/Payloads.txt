@@ -1,0 +1,221 @@
+------  User ------
+
+POST /user
+
+Body:
+
+{
+	"name": "Filipe Xavier",
+	"email": "filipe@test.com",
+	"birth_date": "1999-01-28"
+}
+
+Response:
+
+{
+  "id": 1,
+  "name": "Filipe Xavier",
+  "birth_date": "1999-01-28",
+  "email": "filipe@test.com",
+  "created_at": "2020-05-01T19:29:20.53905771-03:00",
+  "updated_at": "2020-05-01T19:29:20.53905771-03:00"
+}
+
+---
+
+GET /user
+
+Response:
+
+[
+  {
+    "id": 1,
+    "name": "Filipe Xavier",
+    "birth_date": "1999-01-28",
+    "email": "felipe@test.com",
+    "created_at": "2020-05-01T22:29:03.194434Z",
+    "updated_at": "2020-05-01T22:29:03.194434Z"
+  },
+  {
+    "id": 2,
+    "name": "User Test",
+    "birth_date": "1999-03-01",
+    "email": "user@test.com",
+    "created_at": "2020-05-01T22:29:20.539058Z",
+    "updated_at": "2020-05-01T22:29:20.539058Z"
+  }
+]
+
+---
+
+GET /user/:id -> /user/1
+
+{
+  "id": 1,
+  "name": "Felipe Alves",
+  "birth_date": "1999-01-28",
+  "email": "felipe@test.com",
+  "created_at": "2020-05-01T22:29:03.194434Z",
+  "updated_at": "2020-05-01T22:29:03.194434Z"
+}
+
+---
+
+GET /user/:id/debts -> /user/1/debts
+
+[
+  {
+    "id": "ffa2e032-db2d-42f1-abb2-db933a0455eb",
+    "user_id": 1,
+    "company_name": "AT&T",
+    "value": 259.9,
+    "date": "2020-05-01",
+    "status": 1,
+    "created_at": "2020-05-01T22:54:28.07002Z",
+    "updated_at": "2020-05-01T22:54:28.07002Z"
+  },
+  {
+    "id": "2f8517cf-96b0-4550-a4b7-28d6e865fc81",
+    "user_id": 1,
+    "company_name": "AWS",
+    "value": 122.78,
+    "date": "2020-05-01",
+    "status": 1,
+    "created_at": "2020-05-01T23:24:32.404961Z",
+    "updated_at": "2020-05-01T23:24:32.404961Z"
+  }
+]
+
+---
+
+PUT /user/:id -> /user/1
+
+Body:
+
+{
+	"name": "Filipe Xavier",
+	"email": "filipe@test.com",
+	"birth_date": "1999-01-28"
+}
+
+Response:
+
+{
+  "id": 1,
+  "name": "Filipe Xavier",
+  "birth_date": "1999-01-28",
+  "email": "filipe@test.com",
+  "created_at": "2020-05-01T19:29:20.53905771-03:00",
+  "updated_at": "2020-05-01T21:29:20.53905771-03:00"
+}
+
+---
+
+DELETE /user/:id -> /user/2
+
+Response: 204
+
+------  Debt ------
+
+POST /debt
+
+Body:
+
+{
+	"user_id": 1,
+	"company_name": "AWS",
+	"value": 122.78,
+	"date": "2020-05-01",
+	"status": 1
+}
+
+Response:
+
+{
+  "id": "2f8517cf-96b0-4550-a4b7-28d6e865fc81",
+  "user_id": 1,
+  "company_name": "AWS",
+  "value": 122.78,
+  "date": "2020-05-01",
+  "status": 1,
+  "created_at": "2020-05-01T20:24:32.404960787-03:00",
+  "updated_at": "2020-05-01T20:24:32.404960787-03:00"
+}
+
+---
+
+GET /debt
+
+Response:
+
+[
+  {
+    "id": "ffa2e032-db2d-42f1-abb2-db933a0455eb",
+    "user_id": 2,
+    "company_name": "AT&T",
+    "value": 259.9,
+    "date": "2020-05-01",
+    "status": 1,
+    "created_at": "2020-05-01T22:54:28.07002Z",
+    "updated_at": "2020-05-01T22:54:28.07002Z"
+  },
+  {
+    "id": "2f8517cf-96b0-4550-a4b7-28d6e865fc81",
+    "user_id": 1,
+    "company_name": "AWS",
+    "value": 122.78,
+    "date": "2020-05-01",
+    "status": 1,
+    "created_at": "2020-05-01T23:24:32.404961Z",
+    "updated_at": "2020-05-01T23:24:32.404961Z"
+  }
+]
+
+---
+
+GET /debt/:id -> /debt/6aa8cb22-8437-428b-8056-e83b3b2efad4
+
+{
+  "id": "6aa8cb22-8437-428b-8056-e83b3b2efad4",
+  "user_id": 2,
+  "company_name": "Oracle Inc",
+  "value": 5840,
+  "date": "2020-03-01",
+  "status": 3,
+  "created_at": "2020-05-01T22:56:07.137419Z",
+  "updated_at": "2020-05-01T23:26:31.857616Z"
+}
+
+---
+
+PUT /debt/:id -> /debt/6aa8cb22-8437-428b-8056-e83b3b2efad4
+
+Body:
+
+{
+	"user_id": 2,
+	"company_name": "Oracle Inc",
+	"value": 5840.00,
+	"date": "2020-03-01",
+	"status": 3
+}
+
+Response:
+
+{
+  "id": "6aa8cb22-8437-428b-8056-e83b3b2efad4",
+  "user_id": 2,
+  "company_name": "Oracle Inc",
+  "value": 5840,
+  "date": "2020-03-01",
+  "status": 3,
+  "created_at": "2020-05-01T22:56:07.137419Z",
+  "updated_at": "2020-05-01T20:26:31.857616254-03:00"
+}
+
+---
+
+DELETE /debt/:id -> /debt/6aa8cb22-8437-428b-8056-e83b3b2efad4
+
+Response: 204
+
